@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //import Products from './components/Products/Products';
 //import Navbar from './components/Navbar/Navbar';
 
-import {Products, Navbar, Cart } from './components';
+import {Products, Navbar, Cart, Checkout } from './components';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -55,11 +55,15 @@ const App = () => {
     <div>
         <Navbar totalItems={cart.total_items}/>
         <Routes>
+
         <Route exact path='/' element={<Products products={products} onAddToCart={handleAddToCart}/>}>
         </Route>
         <Route exact path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty}
          handleRemoveCart={handleRemoveCart} handleEmptyCart={handleEmptyCart}/>}>
         </Route>
+        <Route exact path='/checkout' element={<Checkout/>}>
+        </Route>
+
         </Routes>
     </div>
     
