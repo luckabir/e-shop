@@ -14,5 +14,7 @@ export default makeStyles(() => ({
   buttons: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
+
   },
 }));
