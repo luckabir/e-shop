@@ -4,18 +4,17 @@ import { useForm, FormProvider } from 'react-hook-form';
 import FormInput from './CustomTextField';
 import { commerce } from '../../lib/commerce';
 import { Link } from 'react-router-dom';
-import { Dashboard } from '@material-ui/icons';
 
 
-const AddressForm = ({ checkoutToken }) => {
-  const methods = useForm();
+
+const AddressForm = ({ checkoutToken, next }) => {
   const [shippingCountries, setShippingCountries] = useState([]);  
   const [shippingCountry, setShippingCountry] = useState('');
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);  
   const [shippingSubdivision, setShippingSubdivision] = useState('');    
   const [shippingOptions, setShippingOptions] = useState([]);  
   const [shippingOption, setShippingOption] = useState(''); 
-
+  const methods = useForm();
 
   const fetchShippingCountries = async (checkoutTokenId) => {
   const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
@@ -49,15 +48,11 @@ const AddressForm = ({ checkoutToken }) => {
       if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
       },[shippingSubdivision]);
 
-
-
-
-
   return (
     <div>
         <Typography variant="h6" gutterBottom>Shipping address</Typography>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit((data) => test({...data, shippingCountry}))}>
+          <form onSubmit={methods.handleSubmit((data) => next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
               <Grid container spacing={3}>
                 <FormInput  name='firstName' label='First Name'></FormInput>
                 <FormInput  name='lastName' label='Last Name'></FormInput>

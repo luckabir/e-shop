@@ -11,7 +11,7 @@ const handleAddToCart = () => onAddToCart(product.id, 1);
   return (
     <div>
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
+            <CardMedia className={classes.media} image={product.image ? product.image.url : ''} title={product.name}/>
         
             <CardContent>
                 <div className={classes.CardContent}>

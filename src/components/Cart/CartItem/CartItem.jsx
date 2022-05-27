@@ -6,7 +6,7 @@ const CartItem = ({item, onUpdateCartQty, onRemoveFromCart}) => {
     const classes = useStyles();
   return (
     <Card>
-        <CardMedia image={item.image.url} alt={item.name} className={classes.media}></CardMedia>
+        <CardMedia image={item.image ? item.image.url : ' '}  alt={item.name} className={classes.media}></CardMedia>
         <CardContent className={classes.cardContent}>
             <Typography variant='h6'>{item.name}</Typography>
             <Typography variant='h6'>{item.price.formatted_with_symbol}</Typography>

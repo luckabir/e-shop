@@ -46,7 +46,7 @@ const Cart = ({cart, handleUpdateCartQty, handleRemoveCart, handleEmptyCart}) =>
     <div>
 <Container>
     <div className='classes.toolbar'/>
-    <Typography className={classes.title} variant="h3" gutterBottom>
+    <Typography className={classes.title} variant="h3" gutterBottom style={{paddingTop: '5%'}}>
     Your shopping Cart
     </Typography>
     { !cart.line_items.length ? <EmptyCart /> : <FilledCart/>}
